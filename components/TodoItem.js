@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
-const TodoItem = () => {
+const TodoItem = ({ id, title }) => {
   return (
     <View style={styles.itemContainer}>
       <Text style={styles.todoItem} numberOfLines={1}>
-        TodoItem
+        {title}
       </Text>
       <Button title="More" />
     </View>

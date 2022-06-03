@@ -1,33 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+
 import { StyleSheet, ScrollView } from "react-native";
 
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {
+  const {
+    state: { selectedGpoupId, listGroups },
+    dispatch,
+  } = useContext(AppContext);
+
   return (
     <ScrollView style={styles.todoList}>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {listGroups.map((el) =>
+        el.id === selectedGpoupId
+          ? el.todos.map((el) => <TodoItem id={el.id} title={el.title} key={el.id} />)
+          : null
+      )}
     </ScrollView>
   );
 };

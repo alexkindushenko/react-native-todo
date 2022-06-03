@@ -3,19 +3,18 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 import AppHeader from "./components/AppHeader";
-import TodoGroopLIst from "./components/TodoGroopLIst";
+import TodoGroopList from "./components/TodoGroopList";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
+import AppContext from "./helpers/todo-context";
 
 import reducer from "./helpers/reducer";
 
-const AppContext = createContext();
-
 const initialState = {
-  listGrups: [
+  listGroups: [
     {
       id: "zaq",
-      groopTitle: "To Bye",
+      groupTitle: "To Buy",
       todos: [
         { id: "qaz", title: "new Book" },
         { id: "qax", title: "new Book" },
@@ -24,7 +23,7 @@ const initialState = {
     },
     {
       id: "xsw",
-      groopTitle: "To Watch",
+      groupTitle: "To Watch",
       todos: [
         { id: "wsx", title: "Terminator 2" },
         { id: "wsc", title: "Terminator 3" },
@@ -33,6 +32,8 @@ const initialState = {
       ],
     },
   ],
+  userSetings: { theme: "red" },
+  selectedGpoupId: "xsw",
 };
 
 export default function App() {
@@ -42,7 +43,7 @@ export default function App() {
     <AppContext.Provider value={{ state, dispatch }}>
       <View style={styles.container}>
         <AppHeader />
-        <TodoGroopLIst />
+        <TodoGroopList />
         <TodoList />
         <AddTodo />
         <StatusBar style="auto" />

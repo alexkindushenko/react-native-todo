@@ -5,7 +5,7 @@ const TodoGroop = ({ item, onPress, textShadowColor, textColor }) => {
   return (
     <View>
       <TouchableOpacity onPress={onPress}>
-        <Text style={[styles.text, textShadowColor]}>{item.title}</Text>
+        <Text style={[styles.text, textShadowColor]}>{item.groupTitle}</Text>
       </TouchableOpacity>
     </View>
   );
