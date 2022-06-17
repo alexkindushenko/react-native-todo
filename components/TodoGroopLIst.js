@@ -5,7 +5,6 @@ import TodoGroop from "./TodoGroop";
 import AppContext from "../helpers/todo-context";
 
 import { ON_CHANGE_LIST_GROUP } from "../helpers/constants";
-import TodoList from "./TodoList";
 
 const TodoGroopList = () => {
   const {

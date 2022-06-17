@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, Text } from "react-native";
+
+import Loading from "./Loading";
 
 import TodoItem from "./TodoItem";
 
