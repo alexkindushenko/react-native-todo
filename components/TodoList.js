@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
-import { StyleSheet, ScrollView, Text } from "react-native";
-
-import Loading from "./Loading";
+import { StyleSheet, ScrollView } from "react-native";
 
 import TodoItem from "./TodoItem";
 
@@ -16,7 +14,9 @@ const TodoList = () => {
     <ScrollView style={styles.todoList}>
       {listGroups.map((el) =>
         el.id === selectedGpoupId
-          ? el.todos.map((el) => <TodoItem id={el.id} title={el.title} key={el.id} />)
+          ? el.todos.map((el) => (
+              <TodoItem id={el.id} title={el.title} key={el.id} done={el.done} />
+            ))
           : null
       )}
     </ScrollView>

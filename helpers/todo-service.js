@@ -15,13 +15,14 @@ export const addTodoItem = async (data) => {
   try {
     return await axios.post(`${_apiBase}`, data);
   } catch (error) {
+    console.log(error);
     return error;
   }
 };
 
-export const updateItem = async (id, data) => {
+export const updateTodoItem = async ({ id, data }) => {
   try {
-    return await axios.put(`${_apiBase}${id}`, data);
+    return await axios.put(`${_apiBase}/${id}`, data);
   } catch (error) {
     return error;
   }

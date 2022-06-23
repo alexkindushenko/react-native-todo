@@ -3,9 +3,10 @@ import {
   FETCH_TODO_SUCCESS,
   FETCH_TODO_REQUEST,
   ON_ADD_TODO_ITEM,
+  ON_TODO_ITEM_DONE,
 } from "./constants";
 
-import { addTodoItem } from "./actions";
+import { addTodoItem, todoItemDone } from "./actions";
 
 function reducer(state, action) {
   console.log(action.type);
@@ -32,42 +33,10 @@ function reducer(state, action) {
         listGroups: [],
       };
     case ON_ADD_TODO_ITEM:
-      // const {
-      //   selectedGpoupId,
-      //   todo: { id, title },
-      // } = action.payload;
-      // return {
-      //   ...state,
-      //   listGroups: state.listGroups.map((el) =>
-      //     el.id === selectedGpoupId ? { ...el, todos: [...el.todos, { id, title }] } : el
-      //   ),
-      // };
       return addTodoItem(state, action.payload);
-    // return {
-    //   listGroups: [
-    //     {
-    //       id: "zaq",
-    //       groupTitle: "To Buy",
-    //       todos: [
-    //         { id: "qaz", title: "new Book" },
-    //         { id: "qax", title: "new Book" },
-    //         { id: "qac", title: "new Book" },
-    //       ],
-    //     },
-    //     {
-    //       id: "xsw",
-    //       groupTitle: "To Watch",
-    //       todos: [
-    //         { id: "wsx", title: "Terminator 2" },
-    //         { id: "wsc", title: "Terminator 3" },
-    //         { id: "wsv", title: "Terminator 4" },
-    //         { id: "wsb", title: "Terminator 5" },
-    //         { id: 1, title: "Terminator 6" },
-    //       ],
-    //     },
-    //   ],
-    //   selectedGpoupId: "xsw",
-    // };
+    case ON_TODO_ITEM_DONE:
+      return todoItemDone(state, action.payload);
+
     default:
       return state;
   }

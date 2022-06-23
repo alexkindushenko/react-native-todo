@@ -27,6 +27,7 @@ const AddTodo = () => {
         value={value}
         autoCorrect={false}
       />
+
       <View style={{ width: "13%" }}>
         <Button
           color="#841584"
