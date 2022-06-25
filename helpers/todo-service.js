@@ -27,3 +27,11 @@ export const updateTodoItem = async ({ id, data }) => {
     return error;
   }
 };
+
+export const deleteTodoItem = async ({ id, selectedGpoupId }) => {
+  try {
+    return await axios.delete(`${_apiBase}/${id}`, { data: { selectedGpoupId } });
+  } catch (error) {
+    return error;
+  }
+};

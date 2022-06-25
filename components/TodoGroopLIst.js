@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { StyleSheet, View, TouchableOpacity, FlatList, Button } from "react-native";
+import { StyleSheet, View, TouchableOpacity, FlatList, Button, Text } from "react-native";
 
 import TodoGroop from "./TodoGroop";
 import AppContext from "../helpers/todo-context";

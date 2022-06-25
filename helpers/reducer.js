@@ -4,9 +4,10 @@ import {
   FETCH_TODO_REQUEST,
   ON_ADD_TODO_ITEM,
   ON_TODO_ITEM_DONE,
+  ON_DELETE_TODO_ITEM,
 } from "./constants";
 
-import { addTodoItem, todoItemDone } from "./actions";
+import { addTodoItem, todoItemDone, todoItemDelete } from "./actions";
 
 function reducer(state, action) {
   console.log(action.type);
@@ -36,6 +37,8 @@ function reducer(state, action) {
       return addTodoItem(state, action.payload);
     case ON_TODO_ITEM_DONE:
       return todoItemDone(state, action.payload);
+    case ON_DELETE_TODO_ITEM:
+      return todoItemDelete(state, action.payload);
 
     default:
       return state;
