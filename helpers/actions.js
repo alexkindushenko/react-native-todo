@@ -30,3 +30,13 @@ export const todoItemDelete = (state, { id, selectedGpoupId }) => {
     listGroups,
   };
 };
+
+export const addNewGroup = (state, { id, groupTitle, todos }) => {
+  const listGroups = [...state.listGroups, { id, groupTitle, todos }];
+  console.log(listGroups);
+  return {
+    ...state,
+    listGroups,
+    selectedGpoupId: id,
+  };
+};

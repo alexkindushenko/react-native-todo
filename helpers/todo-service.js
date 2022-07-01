@@ -35,3 +35,12 @@ export const deleteTodoItem = async ({ id, selectedGpoupId }) => {
     return error;
   }
 };
+
+export const addNewGroup = async (data) => {
+  try {
+    return await axios.post(`${_apiBase}/group`, data);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};

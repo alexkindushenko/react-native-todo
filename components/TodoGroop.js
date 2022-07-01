@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 const TodoGroop = ({ item, onPress, textShadowColor, textColor }) => {
   return (
     <View>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} onLongPress={() => console.log("longPress")}>
         <Text style={[styles.text, textShadowColor]}>{item.groupTitle}</Text>
       </TouchableOpacity>
     </View>
@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     paddingLeft: 3,
     paddingRight: 3,
     margin: 2,
-    // textShadowColor: "rgba(1, 0, 0, 0.75)",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 5,
   },

@@ -5,9 +5,10 @@ import {
   ON_ADD_TODO_ITEM,
   ON_TODO_ITEM_DONE,
   ON_DELETE_TODO_ITEM,
+  ON_ADD_GROUP,
 } from "./constants";
 
-import { addTodoItem, todoItemDone, todoItemDelete } from "./actions";
+import { addTodoItem, todoItemDone, todoItemDelete, addNewGroup } from "./actions";
 
 function reducer(state, action) {
   console.log(action.type);
@@ -39,6 +40,8 @@ function reducer(state, action) {
       return todoItemDone(state, action.payload);
     case ON_DELETE_TODO_ITEM:
       return todoItemDelete(state, action.payload);
+    case ON_ADD_GROUP:
+      return addNewGroup(state, action.payload);
 
     default:
       return state;

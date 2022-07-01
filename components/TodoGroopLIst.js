@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
-import { StyleSheet, View, TouchableOpacity, FlatList, Button, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity, FlatList, Text } from "react-native";
 
 import TodoGroop from "./TodoGroop";
+import AddGroup from "./AddGroup";
 import AppContext from "../helpers/todo-context";
 
 import { ON_CHANGE_LIST_GROUP } from "../helpers/constants";
@@ -11,6 +12,8 @@ const TodoGroopList = () => {
     state: { listGroups, selectedGpoupId },
     dispatch,
   } = useContext(AppContext);
+
+  const [isAdd, setIsAdd] = useState(false);
 
   const renderItem = ({ item }) => {
     const textShadowColor =
@@ -27,13 +30,17 @@ const TodoGroopList = () => {
       />
     );
   };
-  return (
+  return isAdd ? (
+    <AddGroup onIsAdd={() => setIsAdd(false)} />
+  ) : (
     <View style={styles.container}>
       <View style={styles.list}>
         <FlatList horizontal data={listGroups} renderItem={renderItem} />
       </View>
       <TouchableOpacity style={{ width: "13%", marginLeft: 6 }}>
-        <Button color="#841584" title="Add" accessibilityLabel="Add To List" />
+        <Text style={{ fontSize: 45, marginLeft: "2%" }} onPress={() => setIsAdd(true)}>
+          +
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -43,14 +50,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    margin: 6,
+    margin: "2%",
+    marginLeft: "4%",
   },
   list: {
-    width: "84%",
+    width: "90%",
     borderWidth: 1,
     borderRadius: 22,
-    paddingLeft: 6,
-    paddingRight: 6,
+    margin: "2%",
   },
 });
 
