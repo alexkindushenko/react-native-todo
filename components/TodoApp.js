@@ -8,13 +8,14 @@ import TodoGroopList from "./TodoGroopList";
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 import Loading from "./Loading";
+import AuthModal from "./AuthModal";
 
 import { getTodoList } from "../helpers/todo-service";
 import { FETCH_TODO_SUCCESS, FETCH_TODO_REQUEST } from "../helpers/constants";
 
 export default function TodoApp() {
   const {
-    state: { loading, listGroups },
+    state: { loading, listGroups, isAuth },
     dispatch,
   } = useContext(AppContext);
 
@@ -23,6 +24,8 @@ export default function TodoApp() {
     dispatch({ type: FETCH_TODO_REQUEST });
     getTodoList().then((res) => dispatch({ type: FETCH_TODO_SUCCESS, payload: res.data }));
   }, [dispatch]);
+
+  if (!isAuth) return <AuthModal />;
 
   return (
     <View style={styles.container}>

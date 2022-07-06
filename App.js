@@ -9,6 +9,7 @@ const initialState = {
   loading: true,
   listGroups: [],
   selectedGpoupId: "",
+  isAuth: false,
 };
 
 export default function App() {
