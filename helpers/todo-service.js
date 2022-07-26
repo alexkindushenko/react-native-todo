@@ -36,9 +36,18 @@ export const deleteTodoItem = async ({ _id, selectedGpoupId }) => {
   }
 };
 
-export const addNewGroup = async (data) => {
+export const addTodoGroup = async (data) => {
   try {
     return await axios.post(`${_apiBase}/group`, data);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const deleteTodoGroup = async (id) => {
+  try {
+    return await axios.delete(`${_apiBase}/group/${id}`);
   } catch (error) {
     console.log(error);
     return error;

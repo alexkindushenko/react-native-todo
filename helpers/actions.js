@@ -1,4 +1,4 @@
-export const addTodoItem = (state, { _id, title }) => {
+export const todoItemAdd = (state, { _id, title }) => {
   const listGroups = state.listGroups.map((el) =>
     el._id === state.selectedGpoupId ? { ...el, todos: [...el.todos, { _id, title }] } : el
   );
@@ -30,11 +30,21 @@ export const todoItemDelete = (state, { _id, selectedGpoupId }) => {
   };
 };
 
-export const addNewGroup = (state, { _id, groupTitle, todos }) => {
+export const todoGroupAdd = (state, { _id, groupTitle, todos }) => {
   const listGroups = [...state.listGroups, { _id, groupTitle, todos }];
   return {
     ...state,
     listGroups,
     selectedGpoupId: _id,
+  };
+};
+
+export const todoGroupDelete = (state, id) => {
+  const listGroups = state.listGroups.filter((el) => el._id !== id);
+
+  return {
+    ...state,
+    listGroups,
+    selectedGpoupId: listGroups.length ? listGroups[0]._id : "",
   };
 };

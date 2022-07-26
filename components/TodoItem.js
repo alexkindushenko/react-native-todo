@@ -15,6 +15,7 @@ const TodoItem = ({ _id, title, done, onHandleDone, onHandleDelete }) => {
         }}
         numberOfLines={1}
         onPress={() => onHandleDone(_id)}
+        onLongPress={() => null}
       >
         {title}
       </Text>

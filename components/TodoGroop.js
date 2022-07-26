@@ -1,10 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const TodoGroop = ({ item, onPress, textShadowColor, textColor }) => {
+const TodoGroop = ({
+  item,
+  handleChangeTodoGroup,
+  handleDeleteTodoGroup,
+  textShadowColor,
+  textColor,
+}) => {
   return (
     <View>
-      <TouchableOpacity onPress={onPress} onLongPress={() => console.log("longPress")}>
+      <TouchableOpacity onPress={handleChangeTodoGroup} onLongPress={handleDeleteTodoGroup}>
         <Text style={[styles.text, textShadowColor]}>{item.groupTitle}</Text>
       </TouchableOpacity>
     </View>

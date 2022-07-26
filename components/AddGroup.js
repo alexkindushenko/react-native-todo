@@ -2,14 +2,14 @@ import React, { useState, useContext } from "react";
 import { StyleSheet, View, TextInput, Button, TouchableOpacity, Text } from "react-native";
 
 import { ON_ADD_GROUP } from "../helpers/constants";
-import { addNewGroup } from "../helpers/todo-service";
+import { addTodoGroup } from "../helpers/todo-service";
 
 const AddGroup = ({ onIsAdd }) => {
   const [value, setValue] = useState("");
   const { dispatch } = useContext(AppContext);
 
   const onHandleAdd = (value) => {
-    addNewGroup({ groupTitle: value }).then(({ data }) =>
+    addTodoGroup({ groupTitle: value }).then(({ data }) =>
       dispatch({ type: ON_ADD_GROUP, payload: data })
     );
 

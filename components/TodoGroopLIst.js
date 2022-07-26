@@ -5,7 +5,8 @@ import TodoGroop from "./TodoGroop";
 import AddGroup from "./AddGroup";
 import AppContext from "../helpers/todo-context";
 
-import { ON_CHANGE_LIST_GROUP } from "../helpers/constants";
+import { ON_CHANGE_LIST_GROUP, ON_DELETE_TODO_GROUP } from "../helpers/constants";
+import { deleteTodoGroup } from "../helpers/todo-service";
 
 const TodoGroopList = () => {
   const {
@@ -15,6 +16,14 @@ const TodoGroopList = () => {
 
   const [isAdd, setIsAdd] = useState(false);
 
+  const handleDeleteTodoGroup = (id) => {
+    deleteTodoGroup(id).then(({ status }) =>
+      status === 204
+        ? dispatch({ type: ON_DELETE_TODO_GROUP, payload: id })
+        : console.log("eeeeeeeeeee")
+    );
+  };
+
   const renderItem = ({ item }) => {
     const textShadowColor =
       item._id === selectedGpoupId ? "rgba(1, 0, 0, 0.9)" : "rgba(1, 0, 0, 0.1)";
@@ -23,7 +32,8 @@ const TodoGroopList = () => {
     return (
       <TodoGroop
         item={item}
-        onPress={() => dispatch({ type: ON_CHANGE_LIST_GROUP, payload: item._id })}
+        handleChangeTodoGroup={() => dispatch({ type: ON_CHANGE_LIST_GROUP, payload: item._id })}
+        handleDeleteTodoGroup={() => handleDeleteTodoGroup(item._id)}
         textShadowColor={{ textShadowColor }}
         textColor={{ color }}
         keyExtractor={(item) => item._id}
