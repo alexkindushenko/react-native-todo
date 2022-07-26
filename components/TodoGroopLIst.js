@@ -17,16 +17,16 @@ const TodoGroopList = () => {
 
   const renderItem = ({ item }) => {
     const textShadowColor =
-      item.id === selectedGpoupId ? "rgba(1, 0, 0, 0.9)" : "rgba(1, 0, 0, 0.1)";
-    const color = item.id === selectedGpoupId ? "black" : "#f50000";
+      item._id === selectedGpoupId ? "rgba(1, 0, 0, 0.9)" : "rgba(1, 0, 0, 0.1)";
+    const color = item._id === selectedGpoupId ? "black" : "#f50000";
 
     return (
       <TodoGroop
         item={item}
-        onPress={() => dispatch({ type: ON_CHANGE_LIST_GROUP, payload: item.id })}
+        onPress={() => dispatch({ type: ON_CHANGE_LIST_GROUP, payload: item._id })}
         textShadowColor={{ textShadowColor }}
         textColor={{ color }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
       />
     );
   };

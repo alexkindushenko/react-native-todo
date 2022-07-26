@@ -20,17 +20,17 @@ export const addTodoItem = async (data) => {
   }
 };
 
-export const updateTodoItem = async ({ id, data }) => {
+export const updateTodoItem = async ({ _id, data }) => {
   try {
-    return await axios.put(`${_apiBase}/${id}`, data);
+    return await axios.put(`${_apiBase}/${_id}`, data);
   } catch (error) {
     return error;
   }
 };
 
-export const deleteTodoItem = async ({ id, selectedGpoupId }) => {
+export const deleteTodoItem = async ({ _id, selectedGpoupId }) => {
   try {
-    return await axios.delete(`${_apiBase}/${id}`, { data: { selectedGpoupId } });
+    return await axios.delete(`${_apiBase}/${_id}`, { data: { selectedGpoupId } });
   } catch (error) {
     return error;
   }
@@ -41,6 +41,23 @@ export const addNewGroup = async (data) => {
     return await axios.post(`${_apiBase}/group`, data);
   } catch (error) {
     console.log(error);
+    return error;
+  }
+};
+
+export const sendLoginForm = async (data) => {
+  try {
+    return await axios.post(`${_apiBase}/auth/login`, data);
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const sendRegisterForm = async (data) => {
+  try {
+    return await axios.post(`${_apiBase}/auth/register`, data);
+  } catch (error) {
     return error;
   }
 };

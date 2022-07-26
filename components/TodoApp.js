@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 import AppHeader from "./AppHeader";
@@ -20,10 +20,11 @@ export default function TodoApp() {
   } = useContext(AppContext);
 
   useEffect(() => {
-    if (listGroups.length) return;
+    // if (listGroups.length) return;
+    if (!isAuth) return;
     dispatch({ type: FETCH_TODO_REQUEST });
     getTodoList().then((res) => dispatch({ type: FETCH_TODO_SUCCESS, payload: res.data }));
-  }, [dispatch]);
+  }, [dispatch, isAuth]);
 
   if (!isAuth) return <AuthModal />;
 

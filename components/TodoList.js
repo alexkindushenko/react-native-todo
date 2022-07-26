@@ -15,26 +15,26 @@ const TodoList = () => {
 
   const [updatingID, setUpdatingID] = useState("");
 
-  const onHandleDone = (id) => {
-    setUpdatingID(id);
-    updateTodoItem({ id, data: { selectedGpoupId, done: true } })
+  const onHandleDone = (_id) => {
+    setUpdatingID(_id);
+    updateTodoItem({ _id, data: { selectedGpoupId, done: true } })
       .then(({ status }) =>
         status === 201
           ? dispatch({
               type: ON_TODO_ITEM_DONE,
-              payload: { id, selectedGpoupId },
+              payload: { _id, selectedGpoupId },
             })
           : console.log("error")
       )
       .then(() => setUpdatingID(""));
   };
 
-  const onHandleDelete = (id) => {
-    setUpdatingID(id);
-    deleteTodoItem({ id, selectedGpoupId })
+  const onHandleDelete = (_id) => {
+    setUpdatingID(_id);
+    deleteTodoItem({ _id, selectedGpoupId })
       .then(({ status }) => {
-        status === 200
-          ? dispatch({ type: ON_DELETE_TODO_ITEM, payload: { selectedGpoupId, id } })
+        status === 204
+          ? dispatch({ type: ON_DELETE_TODO_ITEM, payload: { selectedGpoupId, _id } })
           : console.log("error");
       })
       .then(() => setUpdatingID(""));
@@ -43,13 +43,13 @@ const TodoList = () => {
   return (
     <ScrollView style={styles.todoList}>
       {listGroups.map((el) =>
-        el.id === selectedGpoupId
+        el._id === selectedGpoupId
           ? el.todos.map((el) => (
               <TodoItem
-                id={el.id}
-                title={el.id === updatingID ? "Updating..." : el.title}
-                key={el.id}
-                done={el.id === updatingID ? false : el.done}
+                _id={el._id}
+                title={el._id === updatingID ? "Updating..." : el.title}
+                key={el._id}
+                done={el._id === updatingID ? false : el.done}
                 onHandleDone={onHandleDone}
                 onHandleDelete={onHandleDelete}
               />
