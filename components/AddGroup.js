@@ -19,7 +19,7 @@ const AddGroup = ({ onIsAdd }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ marginRight: "2%", width: "6%", marginBottom: "1%" }}>
+      <View style={{ width: "10%", marginBottom: "1%" }}>
         <TouchableOpacity onPress={onIsAdd}>
           <Text style={{ fontSize: 30 }}>✖</Text>
         </TouchableOpacity>
@@ -34,7 +34,7 @@ const AddGroup = ({ onIsAdd }) => {
         autoFocus
       />
 
-      <View style={{ width: "13%", marginTop: "1%" }}>
+      <View style={{ width: "15%", marginTop: "1%" }}>
         <Button
           color="#841584"
           title="Add"
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     margin: "4%",
+    justifyContent: "space-between",
   },
   input: {
     width: "75%",

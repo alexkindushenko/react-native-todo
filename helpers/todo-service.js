@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const _apiBase = "http:192.168.1.100:8888";
+const _apiBase = "https://t-todo-rn.herokuapp.com";
 
 export const getTodoList = async () => {
   try {

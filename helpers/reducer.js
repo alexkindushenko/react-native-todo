@@ -34,7 +34,7 @@ function reducer(state, action) {
         ...state,
         loading: false,
         listGroups: action.payload.listGroups || [],
-        selectedGpoupId: action.payload.selectedGpoupId || "",
+        selectedGpoupId: action.payload.listGroups[0]?._id || "",
       };
     case FETCH_TODO_REQUEST:
       return {

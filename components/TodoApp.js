@@ -20,7 +20,6 @@ export default function TodoApp() {
   } = useContext(AppContext);
 
   useEffect(() => {
-    // if (listGroups.length) return;
     if (!isAuth) return;
     dispatch({ type: FETCH_TODO_REQUEST });
     getTodoList().then((res) => dispatch({ type: FETCH_TODO_SUCCESS, payload: res.data }));
@@ -34,7 +33,7 @@ export default function TodoApp() {
       <TodoGroopList />
       {loading ? <Loading /> : null}
       <TodoList />
-      <AddTodo />
+      {listGroups.length ? <AddTodo /> : null}
       <StatusBar style="auto" />
     </View>
   );
